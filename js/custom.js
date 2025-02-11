@@ -110,32 +110,103 @@
 
 	menuCtrl.addEventListener('click', toggleTabs);
 
+	anime({
+		targets: '.about',
+		duration: 600,
+		easing: [0.2,1,0.7,1],
+		translateY: 20,
+		opacity: 0,
+		delay: 0
+	});
+
 	function toggleTabs() {
 		var state = tnav.toggleVisibility();
 		if( state === 0 ) {
 			menuCtrl.classList.remove('btn-menu-active');
 
 			// Scale up content
-			anime.remove('.main-section');
+			anime.remove('.page-header');
 			anime({
-				targets: '.main-section',
+				targets: '.page-header',
 				duration: 600,
 				easing: [0.2,1,0.7,1],
 				opacity: 1,
-				scale: 1
+				//scale: 1
+			});
+
+			anime.remove('.content-wrap');
+			anime({
+				targets: '.content-wrap',
+				duration: 600,
+				easing: [0.2,1,0.7,1],
+				opacity: 1,
+				//scale: 1
+			});
+
+			//animate menu-btn
+
+			anime.remove('.projects');
+			anime({
+				targets: '.projects',
+				duration: 600,
+				easing: [0.2,1,0.7,1],
+				translateY: 0,
+				opacity: 1,
+				delay: 600
+			});
+
+			anime.remove('.about');
+			anime({
+				targets: '.about',
+				duration: 600,
+				easing: [0.2,1,0.7,1],
+				translateY: 20,
+				opacity: 0,
+				delay: 0
 			});
 		}
 		else if( state === 1 ) {
 			menuCtrl.classList.add('btn-menu-active');
 
 			// Scale down content
-			anime.remove('.main-section');
+			anime.remove('.page-header');
 			anime({
-				targets: '.main-section',
+				targets: '.page-header',
 				duration: 600,
 				easing: [0.2,1,0.7,1],
 				opacity: 0.2,
-				scale: 0.9
+				//scale: 0.9
+			});
+
+			anime.remove('.content-wrap');
+			anime({
+				targets: '.content-wrap',
+				duration: 600,
+				easing: [0.2,1,0.7,1],
+				opacity: 0.2,
+				//scale: 0.9
+			});
+
+			//animate menu-btn
+
+			anime.remove('.projects');
+			anime({
+				targets: '.projects',
+				duration: 600,
+				easing: [0.2,1,0.7,1],
+				translateY: 20,
+				opacity: 0,
+				delay: 0
+			});
+
+			anime.remove('.about');
+			anime({
+				targets: '.about',
+				duration: 600,
+				easing: [0.2,1,0.7,1],
+				translateY: 0,
+				opacity: 1,
+				delay: 600
 			});
 		}
 	}
@@ -150,5 +221,9 @@ jQuery(document).ready(function( $ ) {
     $('.btn--back').click(function() {
         $('.tabsnav__item').removeClass('active');
     });
+
+	$('.btn-menu').click(function() {
+		$('.view').toggleClass('active-projects');
+	});
 
 });
