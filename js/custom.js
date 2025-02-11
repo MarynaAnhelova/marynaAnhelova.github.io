@@ -225,5 +225,4 @@ jQuery(document).ready(function( $ ) {
 	$('.btn-menu').click(function() {
 		$('.view').toggleClass('active-projects');
 	});
-
 });
